@@ -1,0 +1,10 @@
+PEnultimo prrafo: anota cosas sobre la grua, averias y demas. Nos tenemos que preguntar,
+¿DONDE ANOT LA CANTIDAD DE COMBUSTIBLE, AVERÍA, ETC? Avería = atributo (booleano) Combustible = int. Esto corresponde luego al alquiler..
+Alquiler tendra: fecha, combustible, avería.
+En grua merecela pena poner algo de combustible? puede ser un indicador sobre si merece o no la pena ponerlo.
+una vez rresueltas las averías el encargado realiza el parte:
+- Precio combustible rellenado
+Despues de arreglar la avería hay que poner si es treu o false.
+¿si nos roban la grúa hay parte? ¿hay siempre parte? (Nouuu)
+
+Igual que en la foto poenq ue hay tres tipos de coche, aqui hay tres tipos de cliente
