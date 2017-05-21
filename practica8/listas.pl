@@ -53,3 +53,17 @@ decreciente([X]).
 decreciente([Num1, Num2|Cola]):-
                         Num1>Num2,
                         decreciente([Num2|Cola]).
+
+/*
+15. Definir mediante append los predicados:
+a) reverse(Xs,Ys):- Ys es Xs con los elementos en orden inverso.
+b) adyacentes(X,Y,Xs):- X e Y están en posiciones consecutivas en Xs.
+c) ultimo(Xs,X):- X es el último elemento de Xs.
+d) primeros(Xs,Ys):- Ys es el resultado de eliminar el último elemento a Xs. */
+revertir([X], [X]).
+revertir([Cabeza|Cola], ListaInversa):-
+                revertir(Cola, LInv),
+                append(LInv, [Cabeza], ListaInversa).
+                /* No va */
+
+                

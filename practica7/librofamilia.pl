@@ -75,3 +75,6 @@ gana_menos_de(Persona, Dinero):-
             _),
             Salario<Dinero,
             Persona = X.          
+
+rever([],[]).
+  rever([H|T],R):-  rever(T,RevT),  append(RevT,[H],R).
