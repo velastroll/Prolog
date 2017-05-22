@@ -4,6 +4,11 @@
 /*   @author t.me/Velastroll    */
 /********************************/
 
+concatenar([], L, L).
+concatenar([Head|Tail], List, [Head|Return]):-
+    concatenar(Tail, List, Return).
+
+
 /* 1 - Determina si lo que hay es una lista */
 es_lista([]):-!.
 es_lista([Cabeza|Cola]) :- es_lista(Cola).
@@ -30,17 +35,48 @@ eliminar_x([Cabeza|Cola], X, [Cabeza|Salida]) :-
 /* 5 - Insertar un elemento X en una lista , en cualquier posicion */
 
 
-/* 6 - Eliminar todos los elementos que siguen a 'z,z,z' y estos incluidos. */
-/*                       NO ME SALE HOSTIA                      */
-eliminar_zzz([Cabeza|Cola], Salid
-eliminar_zzz([Cabeza|Cola], [Cabeza|Salida]) :-
-                            eliminar_zzz(Cola).
+/*6 -   a) Descomponer una lista en dos. Mostrar todas las posibilidades
+        b) Eliminar todos los elementos que siguen a 'z,z,z' y estos incluidos.
+        c) Borrar los tres últimos elementos de una lista.
+        d) Definir de nuevo la operación miembro a partir de concatenar.
+        e) Definir la relación para extraer el último elemento de la lista:
+            e.1) Utilizando la definición de concatenación.
+            e.2) Sin utilizarla.        */
+/* A - No funciona */
+descomponer([Xs|Ys],Xs,Ys).
+descomponer([],[],[]).
+descomponer([As|Bs],[As|Xs],B):-descomponer(Bs,Xs,B).
+/* B */
+eliminar_XXX([X, Y, Z|Cola],[X,Y,Z], Salida):-
+                                        Salida = [].
+eliminar_XXX([Cabeza|Cola], [X, Y, Z], [Cabeza|Salida]) :-
+                                        eliminar_XXX(Cola, [X, Y, Z], Salida).
+/* C */
+eliminar3ultimos([X], []):-!.
+eliminar3ultimos([X, Y], []):-!.
+eliminar3ultimos([X, Y, Z], []):-!.
+eliminar3ultimos([Head|Tail], [Head|Return]):-
+                                eliminar3ultimos(Tail, Return).
+/* D */
+miembro(Member, [Member|List]):-!.
+miembro(Member, [Member]):-!.
+miembro(Member, [Head|Tail]):-
+                        miembro(Member, Tail).
+/* E.2 */
+extraeUltimo([], []):-!.
+extraeUltimo([Last], Last):-!.
+extraeUltimo([Head|Tail], Last):-
+    extraeUltimo(Tail, Last).
+
+
+
 
 /* 7 - Construye una lista con todos los elementos que se encuentran antes de X elemento. */
 
 antes_de([X, Cabeza|Cola], Cabeza, X).
-antes_de([Cabeza|Cola], X, [Cabeza|Salida]) :-
-                        antes_de(Cola, X, Salida).
+antes_de([Cabeza|Cola], X, Output) :-
+                        antes_de(Cola, X, Return),
+                        concatenar([Cabeza], Return, Output).
 
 /* 8 - Determina si una lista númerica está en orden creciente */
 creciente([X]).
@@ -48,7 +84,7 @@ creciente([Num1, Num2|Cola]):-
                         Num1<Num2,
                         creciente([Num2|Cola]).
 
-/* 9 - DEtermina si una lista númerica está en orden decreciente. */
+/* 9 - Determina si una lista númerica está en orden decreciente. */
 decreciente([X]).
 decreciente([Num1, Num2|Cola]):-
                         Num1>Num2,
@@ -64,6 +100,3 @@ revertir([X], [X]).
 revertir([Cabeza|Cola], ListaInversa):-
                 revertir(Cola, LInv),
                 append(LInv, [Cabeza], ListaInversa).
-                /* No va */
-
-                
